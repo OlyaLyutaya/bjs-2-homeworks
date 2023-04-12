@@ -7,16 +7,11 @@ function compareArrays(arr1, arr2) {
     });
   }
   function getUsersNamesInAgeRange(users, gender) {
-    let filteredUsers = users.filter(function(user) {
-      return user.gender === gender;
-    });
-    let ages = filteredUsers.map(function(user) {
-      return user.age;
-    });
-    let sum = ages.reduce(function(acc, value) {
-      return acc + value;
-    }, 0);
-    let average = sum / ages.length;
-    return average;
+    if (users.length==0 || (users.findIndex(rez => rez.gender == gender)<0)){
+      return 0;
+    } else {
+      let result = users.filter(rez => rez.gender == gender ).reduce((accumulator, currentValue) => accumulator + currentValue.age, 0) / users.filter(rez => rez.gender == gender).length
+      return result;
+      }
   }
   
